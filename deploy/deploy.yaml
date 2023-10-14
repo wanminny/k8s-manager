@@ -1,0 +1,57 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-manager
+  namespace: flink
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-manager
+  template:
+    metadata:
+      labels:
+        app: k8s-manager
+    spec:
+      containers:
+        - image: wanminny/k8s-manager:v0.1
+          imagePullPolicy: Always
+          name: k8s-manager
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    #    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/client-body-buffer-size: 20m
+    nginx.ingress.kubernetes.io/proxy-body-size: 20m
+  name: k8s-manager
+  namespace: flink
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - backend:
+              service:
+                name: k8s-manager
+                port:
+                  number: 8080
+            path: /mng/(/|$)(.*)
+            pathType: ImplementationSpecific
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-manager
+  namespace: flink
+spec:
+  ports:
+    - name: http
+      port: 8082
+      protocol: TCP
+      targetPort: 8082
+  selector:
+    app: k8s-manager
+  type: ClusterIP

@@ -32,7 +32,7 @@ const router = createRouter({
       path: '/:pathMatch(.*)',
       redirect: '/404',
     },
-  ]
+  ],
 })
 
 export default router
