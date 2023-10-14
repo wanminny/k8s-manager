@@ -25,7 +25,7 @@ const router = createRouter({
     },
     {
       path: '/404',
-      component: () => import('../views/common/404.vue'),
+      component: () => import('../views/NotView.vue'),
       meta: {title:"404",requiredAuth:true},
     },
     {

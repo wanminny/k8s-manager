@@ -1,6 +1,17 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import axiosInstance from './utils/request'
+
+
+const getData = async() =>{
+  let  resp = await axiosInstance({
+      method: "get",
+      url: '/v1/user/userid/4',
+  })
+  console.log(resp)
+}
+getData()
 </script>
 
 <template>
