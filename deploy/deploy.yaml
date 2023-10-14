@@ -38,7 +38,7 @@ spec:
                 name: k8s-manager
                 port:
                   number: 8080
-            path: /mng/(/|$)(.*)
+            path: /mng(/|$)(.*)
             pathType: ImplementationSpecific
 ---
 apiVersion: v1
