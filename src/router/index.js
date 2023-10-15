@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Layout from '@/layout/index.vue';
+import Layout from '../layout/lay-out.vue';
 
-import {
-  Home,
-} from '@/page';
+// import {
+//   Home,
+// } from '@/page';
 
 const router = createRouter({
   // 所有path 添加mng前缀;
@@ -11,30 +11,50 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/home',
+      redirect: '/index',
     },
     {
-      path: '/',
-      meta: {
-        title: '概览',
-      },
+      path: '/index',
+      name: 'index',
       component: Layout,
       children: [
         {
-          path: '/about',
-          name: 'about',
+          path: '/role',
+          name: 'role',
+          component: () => import('@/page/role/role.vue')
+        },
+        {
+          path: '/user',
+          name: 'user',
           // route level code-splitting
           // this generates a separate chunk (About.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
-          component: () => import('@/page/about/About.vue')
-        },
-        {
-          path: '/home',
-          name: 'home',
-          component: Home,
+          component: () => import('@/page/user/user.vue')
         },
       ],
     },
+    // {
+    //   path: '/index',
+    //   meta: {
+    //     title: '概览',
+    //   },
+    //   component: Layout,
+      // children: [
+      //   {
+      //     path: '/about',
+      //     name: 'about',
+      //     // route level code-splitting
+      //     // this generates a separate chunk (About.[hash].js) for this route
+      //     // which is lazy-loaded when the route is visited.
+      //     component: () => import('@/page/about/About.vue')
+      //   },
+      //   {
+      //     path: '/home',
+      //     name: 'home',
+      //     component: Home,
+      //   },
+      // ],
+    // },
     // {
     //   path: '/main', //视图
     //   component: () => import('../views/AboutView.vue'),
@@ -46,10 +66,10 @@ const router = createRouter({
     //   component: () => import('../views/NotView.vue'),
     //   meta: {title:"404",requiredAuth:true},
     // },
-    {
-      path: '/:pathMatch(.*)',
-      redirect: '/404',
-    },
+    // {
+    //   path: '/:pathMatch(.*)',
+    //   redirect: '/404',
+    // },
   ],
 })
 // 路由守卫

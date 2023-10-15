@@ -12,8 +12,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+    },
   },
+  lintOnSave: false, // lint语法检测关闭语法检查，主要针对ESlint里面定义却没有使用出现的报错
   server: {
     host: 'localhost',
     port: 8082,
