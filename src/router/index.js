@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
+  // 所有path 添加mng前缀;
   history: createWebHistory(import.meta.env.BASE_URL+ 'mng'),
   routes: [
     {
@@ -34,5 +35,10 @@ const router = createRouter({
     },
   ],
 })
+// 路由守卫
+router.beforeEach((to, from) => {
+
+});
+
 
 export default router

@@ -1,8 +1,38 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h2 v-if="userData.data">{{ userData.data }}</h2>
+    <p v-else>Loading...</p>
+  <div>
+    <!-- {{ userData.data }} -->
+  </div>
+
   </div>
 </template>
+
+<script setup>
+import axiosInstance from '../utils/request'
+import { reactive } from 'vue';
+const userData = reactive({
+  data: '',
+});
+
+const fetchData  = (async () => {
+  try {
+    const response = await axiosInstance({
+      method: 'get',
+      url: '/v1/user/userid/4',
+    });
+    userData.data = response;
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+    userData.data = null;
+  }
+});
+
+fetchData()
+
+</script>
 
 <style>
 @media (min-width: 1024px) {
