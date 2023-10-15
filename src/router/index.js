@@ -1,5 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Layout from '@/layout/index.vue';
+
+import {
+  Home,
+} from '@/page';
 
 const router = createRouter({
   // 所有path 添加mng前缀;
@@ -7,28 +11,41 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      redirect: '/home',
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      path: '/',
+      meta: {
+        title: '概览',
+      },
+      component: Layout,
+      children: [
+        {
+          path: '/about',
+          name: 'about',
+          // route level code-splitting
+          // this generates a separate chunk (About.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import('@/page/about/About.vue')
+        },
+        {
+          path: '/home',
+          name: 'home',
+          component: Home,
+        },
+      ],
     },
-    {
-      path: '/main', //视图
-      component: () => import('../views/AboutView.vue'),
-      icon: "odometer", //图标
-      meta: {title:"概要", requireAuth: false}, //定义meta元数据
-    },
-    {
-      path: '/404',
-      component: () => import('../views/NotView.vue'),
-      meta: {title:"404",requiredAuth:true},
-    },
+    // {
+    //   path: '/main', //视图
+    //   component: () => import('../views/AboutView.vue'),
+    //   icon: "odometer", //图标
+    //   meta: {title:"概要", requireAuth: false}, //定义meta元数据
+    // },
+    // {
+    //   path: '/404',
+    //   component: () => import('../views/NotView.vue'),
+    //   meta: {title:"404",requiredAuth:true},
+    // },
     {
       path: '/:pathMatch(.*)',
       redirect: '/404',
@@ -36,9 +53,9 @@ const router = createRouter({
   ],
 })
 // 路由守卫
-router.beforeEach((to, from) => {
-
-});
+// router.beforeEach((to, from) => {
+//
+// });
 
 
 export default router

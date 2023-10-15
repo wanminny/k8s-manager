@@ -1,4 +1,5 @@
 <template>
+  <el-button>我是 ElButton</el-button>
   <div class="about">
     <h2 v-if="userData.data">
       <div>
@@ -21,8 +22,10 @@
 </template>
 
 <script setup>
-import axiosInstance from '../utils/request'
+import axiosInstance from '@/utils/request'
 import { reactive } from 'vue';
+import { ElButton } from 'element-plus'
+
 const userData = reactive({
   data: [],
   alluser: [],
