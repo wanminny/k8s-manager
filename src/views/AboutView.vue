@@ -3,7 +3,6 @@
     <h2 v-if="userData.data">{{ userData.data }}</h2>
     <p v-else>Loading...</p>
   <div>
-    <!-- {{ userData.data }} -->
   </div>
 
   </div>
