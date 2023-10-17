@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Layout from '../layout/lay-out.vue';
+import Layout from '../view/layout/lay-out.vue';
 
 // import {
 //   Home,
@@ -21,7 +21,7 @@ const router = createRouter({
         {
           path: '/role',
           name: 'role',
-          component: () => import('@/page/role/role.vue')
+          component: () => import('@/view/page/role/role.vue')
         },
         {
           path: '/user',
@@ -29,7 +29,7 @@ const router = createRouter({
           // route level code-splitting
           // this generates a separate chunk (About.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
-          component: () => import('@/page/user/user.vue')
+          component: () => import('@/view/page/user/user.vue')
         },
       ],
     },
