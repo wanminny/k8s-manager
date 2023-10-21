@@ -39,7 +39,7 @@ getUserInfoById(4).then(res => {
             userData.data = [];
           }),
 
-getAllUserInfo(4).then(res => {
+getAllUserInfo().then(res => {
             //响应成功，获取deployment列表和total
             userData.alluser = res;
           })
