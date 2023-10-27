@@ -6,13 +6,30 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: ()=> import('@/views/HomePage.vue')
+      redirect: "/index",//重定向 进来就自动默认到index路径
     },
     {
-      path: '/about',
-      name: 'about',
-      component: ()=> import('@/views/page/about.vue')
-    }
+      path: '/index',
+      name: 'index',
+      component: () => import('../views/layout/LayOut.vue'),
+      //嵌套路由/子路由
+      children: [
+        {
+          path: "/role",
+          name: "role",
+          component: () => import('../views/page/role/role.vue'),
+        }, {
+          path: "/user",
+          name: "user",
+          component: () => import('../views/page/user/user.vue'),
+        },
+        {
+          path: '/about',
+          name: 'about',
+          component: () => import('../views/page/about/about.vue')
+        }
+      ]
+    },
   ]
 })
 
