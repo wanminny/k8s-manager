@@ -5,10 +5,12 @@
         <el-header class="common-header flex-float">
           <div class="flex">
             <!-- <img class="logo" src="../../assets/logo.png" alt="logo" /> -->
-            <h1 class="title">kubeweb后台管理系统</h1>
-          </div>
-          <div>
-            <el-button type="danger">退出</el-button>
+            <h2 class="title">
+              <div>
+                <div class="content">kubeweb管理系统</div>
+                <div class="loginout"><el-button type="danger">退出</el-button></div>
+              </div>
+            </h2>
           </div>
 
         </el-header>
@@ -78,7 +80,14 @@
 .logo {
   width: 30px;
 }
-.title {
+.content {
   color: #fff;
+  display: inline; 
+  vertical-align: middle;
+}
+.loginout{
+  float:right;
+  display: inline;
+  vertical-align: middle;
 }
 </style>
