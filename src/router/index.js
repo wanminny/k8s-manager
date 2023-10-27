@@ -18,6 +18,12 @@ const router = createRouter({
       redirect: "/index",//重定向 进来就自动默认到index路径
     },
     {
+      path: '/login',  //url路径
+      component: () => import('@/views/page/login/login.vue'),  //视图组件
+      icon: "odometer",  //图标
+      meta: {title: "登录", requireAuth: false},  //meta元信息
+    },
+    {
       path: '/index',
       name: 'index',
       component: () => import('../views/layout/LayOut.vue'),

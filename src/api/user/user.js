@@ -1,4 +1,4 @@
-import service from "../utils/request";
+import service from "../../utils/request";
 
 
 // @Summary 获取用户列表

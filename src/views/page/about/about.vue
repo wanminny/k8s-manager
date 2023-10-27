@@ -23,7 +23,7 @@
 
 <script setup>
 import { reactive } from 'vue';
-import {getAllUserInfo, getUserInfoById } from '@/api/user.js'
+import {getAllUserInfo, getUserInfoById } from '@/api/user/user.js'
 
 const userData = reactive({
   data: [],
