@@ -4,8 +4,8 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-const app = createApp(App)
-app.use(createPinia())
-app.use(router)
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 
-app.mount('#app')
+const app = createApp(App);
+app.use(ElementPlus).use(createPinia()).use(router).mount('#app')

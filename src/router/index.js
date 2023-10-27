@@ -5,9 +5,24 @@ import { createRouter, createWebHistory } from 'vue-router'
 //   Home,
 // } from '@/page';
 
+// const pages = import.meta.glob('../view/page/**/*.vue');
+// const routes = Object.keys(pages).map((path)=>{
+//     let name = path.match(/\/page(.*)\.vue$/)[1].toLowerCase();
+//     console.log(1,name)
+//     // if(name.substring(name.length - 3) == 'mng'){
+//     //     name = name.slice(0, -5);//去掉最后的index
+//     //     console.log(2,name)
+//     // } 
+//     return {
+//         path: name === '/mng/home' ? '/': name,
+//         component: pages[path]
+//     }
+// })
+
 const router = createRouter({
   // 所有path 添加mng前缀;
   history: createWebHistory(import.meta.env.BASE_URL+ 'mng'),
+  
   routes: [
     {
       path: '/',
@@ -18,29 +33,8 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: ()=> import('@/views/page/about.vue')
-    },
-    // {
-    //   path: '/',
-    //   redirect: '/index',
-    // },
-    // {
-    //   path: '/index',
-    //   name: 'index',
-    //   component: Layout,
-    //   children: [
-    //     {
-    //       path: '/role',
-    //       name: 'role',
-    //       component: () => import('@/view/page/role/role.vue')
-    //     },
-    //     {
-    //       path: '/user',
-    //       name: 'user',
-    //       component: () => import('@/view/page/user/user.vue')
-    //     },
-    //   ],
-    // }, 
-  ],
+    }
+  ]
 })
 
 export default router

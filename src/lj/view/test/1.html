@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+         <!-- {{message}} -->
+         <div>
+ {{message}}
+         <input type="text" v-model="message">
+         </div>
+
+         <hr>
+         <div v-if="msg">
+            {{msg}}
+         </div>
+         <div v-else="msg">
+            {{msg}} is null
+         </div>
+         <hr>
+         <div v-for="todo in todos">
+            {{todo}}
+         </div>
+
+         <div v-show="msg">我有内容</div>
+
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "这个是后台系统",
+                show: "true",
+                msg: "",
+                todos: [1,2,"dd"]
+            }
+        })
+    </script>
+</body>
+</html>
