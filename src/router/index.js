@@ -4,6 +4,15 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL+ 'mng'),
   routes: [
     {
+        path: '/404',
+        component: () => import('@/views/common/404.vue'),
+        meta: {title:"404" ,requireAuth:false}
+    },
+    {
+        path: '/:pathMatch(.*)',
+        redirect: '404'
+    },
+    {
       path: '/',
       name: 'home',
       redirect: "/index",//重定向 进来就自动默认到index路径
