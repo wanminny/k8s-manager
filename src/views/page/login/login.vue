@@ -11,7 +11,7 @@
             <el-form :model="loginData" :rules="loginDataRules" ref="loginData">
                 <el-form-item prop="user_name">
                     <!-- 用户名 -->
-                    <el-input prefix-icon="UserFilled" v-model.trim="loginData.username" maxlength="32" placeholder="请输入账号" clearable></el-input>
+                    <el-input prefix-icon="UserFilled" v-model.trim="loginData.user_name" maxlength="32" placeholder="请输入账号" clearable></el-input>
                 </el-form-item>
                 <el-form-item prop="password">
                     <!-- 密码 -->
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import moment from 'moment';
+// import moment from 'moment';
 import {login} from "@/api/user/login";
 export default{
     data() {
@@ -57,22 +57,33 @@ export default{
     methods: {
         //登录方法
         handleLogin() {
+           console.log(this.loginData) 
           login(this.loginData)
-            .then(res => {
+          .then(res => {
                 //账号密码校验成功后的一系列操作
-                localStorage.setItem('user_name', this.loginData.user_name);
-                localStorage.setItem('loginDate', moment().format('YYYY-MM-DD HH:mm:ss'));
+                // localStorage.setItem('user_name', this.loginData.user_name);
+                // localStorage.setItem('loginDate', moment().format('YYYY-MM-DD HH:mm:ss'));
                 //存放token
-                localStorage.setItem('token', res.data.token);
+                // localStorage.setItem('token', res.data.token);
                 //跳转至根路径
-                this.$router.push('/');
-                this.$message.success({
-                    message: "登录成功"
-                })
+                // console.log(333,res)
+                if (res.code != 200 ) {
+                    this.$message.error({
+                        message: res.message
+                    })
+                    this.$router.push('/login')
+                    return
+                }else{
+                    this.$router.push('/');
+                    this.$message.success({
+                        message: res.message
+                    })
+                }                
             })
-            .catch(res => {
+          .catch(res => {
+                console.log(111,res)
                 this.$message.error({
-                message: res.msg
+                    message: res.message
                 })
             })
         }

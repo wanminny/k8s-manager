@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive,onBeforeMount } from 'vue';
 import {getAllUserInfo, getUserInfoById } from '@/api/user/user.js'
 
 const userData = reactive({
@@ -30,18 +30,19 @@ const userData = reactive({
   alluser: [],
 });
 
-getUserInfoById(4).then(res => {
+onBeforeMount(()=>{
+  getUserInfoById(4).then(res => {
             //响应成功，获取deployment列表和total
-            userData.data = res;
+            userData.data = res.result;
           })
           .catch(error => {
             console.error(error);
             userData.data = [];
           }),
 
-getAllUserInfo().then(res => {
+  getAllUserInfo().then(res => {
             //响应成功，获取deployment列表和total
-            userData.alluser = res;
+            userData.alluser = res.result;
           })
           .catch(error => {
             console.error(error);
@@ -49,6 +50,8 @@ getAllUserInfo().then(res => {
           })
 
 // console.log(userData.data);
+});
+
 </script>
 
 <style lang="scss" scoped>
