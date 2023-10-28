@@ -8,7 +8,7 @@
             <h2 class="title">
               <div>
                 <div class="content">kubeweb管理系统</div>
-                <div class="loginout"><el-button type="danger">退出</el-button></div>
+                <div class="loginout"><el-button type="danger" @click="logout">退出</el-button></div>
               </div>
             </h2>
           </div>
@@ -62,7 +62,17 @@
   </div>
 </template>
 
-<script>
+<script setup>
+
+import { useRouter } from "vue-router";
+
+const router = useRouter()
+
+const logout = () => {
+  router.push('/login');
+  return;
+}
+
 
 </script>
 <style >
