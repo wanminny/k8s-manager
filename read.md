@@ -40,4 +40,6 @@ Done. Now run:
 > 2. 调试
  有时候后调试很奇怪的情况可以rm -rf node_modules 目录后，重新 npm i 再试一下;
 
- 
+
+> 3. 功能
+![Alt text](./docs/image.png)
