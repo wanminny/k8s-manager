@@ -36,3 +36,8 @@ Done. Now run:
 > npm install
 > npm run dev
 ```
+
+> 2. 调试
+ 有时候后调试很奇怪的情况可以rm -rf node_modules 目录后，重新 npm i 再试一下;
+
+ 
